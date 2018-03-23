@@ -1,11 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import { Carousel, CarouselItem, CarouselCaption } from 'react-bootstrap';
-
-var Carousel = require('react-bootstrap').Carousel;
-var CarouselItem = require('react-bootstrap').CarouselItem;
-var CarouselCaption = require('react-bootstrap').CarouselCaption;
-
+import { Carousel, CarouselItem, CarouselCaption } from 'react-bootstrap';
 
 export default class Greeter extends React.Component  {
     render(){
