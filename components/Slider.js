@@ -1,96 +1,74 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React,{Component} from 'react';
 import './Slider.less';
-export default class Slider extends React.Component {
+import SliderArrows from "./SliderArrow";
+import SliderItems from "./SliderItems";
+import SliderDots from "./SliderDots";
+
+
+export default class Slider extends Component{
     constructor(){
         super();
-        this.state = { pos: 0 }; // 默认索引
+        this.state={index:0,isMoving:false};
     }
-
     componentDidMount(){
-        if (this.props.autoplay) { 
-            this.play();
-        }           
-    };
-
-    turn = (n) => {
-        let pos = this.state.pos; // 获取旧索引
-        pos += n; // 每隔2s让pos加1
-        // pos值影响ul的左偏移量left的值 所以ul应该有个style属性 left值应该变化
-        
-        // 边界判断 -- 当索引为图片总张数的时候，让索引变为0
-        if(pos >= this.props.images.length){
-            pos = 0;
-        }
-
-        if(pos<0){
-            pos = this.props.images.length - 1 
-        }
-        
-        this.setState({pos:pos})
-    };
-
-    play = () => {
-        this.timer = setInterval( ()=>{
-            this.turn(1); // 往左走传1，往右走传-1
-        }, this.props.interval * 1000)
-    };
-
-   render(){
-       let images = this.props.images;
-       let style = {
-            width: 500 * images.length,
-            left: this.state.pos * -500,
-            transitionDuration: this.props.speed + 's'
-       };
-
-       let arrows = null;
-       if(this.props.arrows){
-           arrows=(
-               <div className="arrows">
-                    <span onClick={()=>this.turn(-1)} className="arrow arrow-left">&lt;</span>
-                    <span onClick={()=>this.turn(1)} className="arrow arrow-right">&gt;</span>
-                </div>
-            )
-        };
-
-        // let dots = null;
-        // if(this.props.dots){
-        //     dots=(
-        //         <div className="dots">
-        //             {
-        //                 images.map((image,index)=>(
-        //                     <span 
-        //                     className={ "dot" + (index==this.state.pos?'active':'') }
-        //                     key={index}
-        //                     onClick={()=>this.turn(index-this.state.pos)}></span>
-        //                 ))
-        //             }
-        //         </div>
-        //     )
+        // if(this.props.autoPlay){
+        //     this.go();
         // }
+    }
+    turn=(step)=>{
+        if(!this.state.isMoving){
+            this.setState({isMoving:true});
+            let index=this.state.index+step;
+            if(index>this.props.images.length){
+                this.sliders.style.transitionDuration='0s';
+                this.sliders.style.left=0;
+                index=1;
+                window.getComputedStyle(this.sliders,null).left;
+                this.setState({index});
+                this.sliders.style.transitionDuration=this.props.speed+'s';
+                setTimeout(()=>{
+                    this.setState({isMoving:false});
+                },this.props.speed*1000);
+                return;
+            }else if(index<0){
+                this.sliders.style.transitionDuration='0s';
+                this.sliders.style.left=this.props.images.length*-500+'px';
+                index=this.props.images.length-1;
+                window.getComputedStyle(this.sliders,null).left;
+                this.setState({index});
+                this.sliders.style.transitionDuration=this.props.speed+'s';
+                setTimeout(()=>{
+                    this.setState({isMoving:false});
+                },this.props.speed*1000);
+                return;
+            }
+            setTimeout(()=>{
+                this.setState({isMoving:false});
+            },this.props.speed*1000);
+            this.setState({index})
+        }
+    };
+    // go=()=>{
+    //     this.timer=setInterval(()=>{
+    //         this.turn(1);
+    //     },this.props.delay*1000);
+    // };
+    setSliders=(ref)=>{
+        this.sliders=ref
+    };
 
-       return(
-           <div className="slider-wrapper">
-               <ul 
-                   onMouseOver={() => clearInterval(this.timer)}
-                   onMouseOut={this.play} 
-                   style={style} 
-                   className="sliders">
-
-                   {
-                       images.map((image,index) => (
-                         <li className="slider" key={index}>
-                             <img src={image.src} />
-                         </li>
-                       ))
-                   }
-               </ul>
-
-               {arrows}
-
-               {/* {dots} */}
-           </div>
-       )
-   }
+    render(){
+        return(
+            <div className="slider-wrapper" onMouseOut={this.go} onMouseOver={()=>clearInterval(this.timer)}>
+                <SliderItems
+                    images={this.props.images}
+                    index={this.state.index}
+                    setSliders={this.setSliders}
+                    speed={this.props.speed}
+                />
+                <SliderDots images={this.props.images} turn={this.turn} index={this.state.index}/>
+                <SliderArrows turn={this.turn}/>
+            </div>
+        )
+    }
 }
