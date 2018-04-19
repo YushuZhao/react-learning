@@ -19,7 +19,7 @@ module.exports={
         })
     ],
     resolve: {
-        module: [
+        modules: [
             'node_modules',
             path.resolve(__dirname, 'src/common'),
             path.resolve(__dirname, 'src/component')
