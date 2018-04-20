@@ -1,6 +1,6 @@
 ## ES6语法
 
-###变量声明 let const
+### 变量声明 let const
 
 #### let
 * 不能重复声明
@@ -13,7 +13,7 @@
     }while(0);
     console.log(a) // 报错: a is not defined
 
-####const
+#### const
 * 声明时要初始化
  const a = 9
 * 不能再次赋值，但可以改变对象的内容
@@ -22,7 +22,7 @@
  * const a = {};
 a.b = 9
 
-###函数的扩展
+### 函数的扩展
 * 可以给函数参数一个默认的值
 ```
 function fn(a,b=7) {
@@ -107,7 +107,7 @@ let obj = {
 obj.fn();  // Window
 ```
 
-###模板字符串
+### 模板字符串
 * 声明模板字符串使用反引号
 * 使用{}在里面写表达式
 ```
@@ -132,7 +132,7 @@ let s = `${ 3<2 ? 'yushu' : 'shuxin' } is ${age}.`
 console.log(s);
 ```
 
-###变量结构赋值
+### 变量结构赋值
 
 * 变量的结构赋值语法
 ```
@@ -192,7 +192,7 @@ function logNames({firstName, lastName}, age) {
 logNames({firstName: 'a', lastName: 'b'}, 23)
 ```
 
-###spread rest
+### spread rest
 * spread 展开  
 ```
 function fn(a, b, c){
@@ -234,7 +234,7 @@ let {a, c, ...rest} = obj;
 console.log(a, c, rest) // 1 3 {b:2, d:4}
 ```
 
-###类以及类的继承
+### 类以及类的继承
 
 ```
 // ES5中,声明一个函数
@@ -324,13 +324,13 @@ let fnn = b.singing;
 fnn();
 ```
 
-###ES6规范的模块化语法
+### ES6规范的模块化语法
 * export default function(){}  默认导出，可以没有名字
 * import 接受默认导出，可以任意命名，只能使用一次
 * export let num = 789; 可以使用多次export来导出
 * import { num } from ' ' ; 
 
-###CommonJS规范的模块化语法
+### CommonJS规范的模块化语法
 (node js 就是使用CommonJS模块化规范的语法)
 * 导入
  * const num = require('./modules/common');
