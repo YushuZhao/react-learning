@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Greeter from './src/component/Greeter'
+import SettingsItem from './src/components/SettingItem'
 
 ReactDOM.render(
-    <Greeter />, 
+    <SettingsItem />, 
     document.getElementById('root')
 );
