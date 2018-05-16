@@ -8,8 +8,8 @@ const SettingsItem = ({ title, clicked, selected }) => {
             cursor: 'pointer'
         },
         title: {
-            color: selected ? 'red' :'green',
-            backgroundColor: selected ? '#C1FFC1': '#FFEFDB',
+            color: selected ? 'black' :'red',
+            backgroundColor: selected ? '#FFFFFF': '#FFE4E1',
             textAlign: 'left',
             width: '67%',
             borderRadius: '20px',

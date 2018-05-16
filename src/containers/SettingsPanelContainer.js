@@ -11,13 +11,13 @@ import {
 const SettingsPanel = () => {
     return (
         <div>
-            <tabel>
+            <table>
                 <tbody>
                     <SettingsItemContainer title={ACCOUNT}/>
                     <SettingsItemContainer title={REPORT}/>
                     <SettingsItemContainer title={VERSION}/>
                 </tbody>
-            </tabel>
+            </table>
         </div>
     )
 }

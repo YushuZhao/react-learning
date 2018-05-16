@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import App from './src/store/configureStore';
+import { Provider } from 'react-redux';
+import store from './src/store/configureStore';
+import SettingsPanel from './src/containers/SettingsPanelContainer';
 
 ReactDOM.render(
-    <App />, 
+    <Provider store={store}>
+          <SettingsPanel />
+    </Provider>, 
     document.getElementById('root')
 );

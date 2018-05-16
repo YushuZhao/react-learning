@@ -1,7 +1,8 @@
-import { combineReducer } from 'redux';
+import {  } from 'redux';
+import { combineReducers } from 'redux';
 import {
     SELECT_SETTING, ACCOUNT, REPORT, VERSION
-} from '../actions/SettingsAction';
+} from '../../actions/SettingsAction';
 
 function currentSettingSelected(state = REPORT, action) {
     switch (action.type) {

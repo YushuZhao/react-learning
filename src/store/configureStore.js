@@ -1,17 +1,13 @@
-// import { createStore } from 'redux';
+import { createStore } from 'redux';
+import rootReducer from '../reducers/index';
 
 // import SettingsPanel from '../containers/SettingsPanelContainer';
 
-// const store = createStore()
+const initialState = {};
 
-// class App extends Component {
-//   render () {
-//     return (
-//       <Provider store={store}>
-//         <SettingsPanel />
-//       </Provider>
-//     )
-//   }
-// }
+const store = createStore(
+  rootReducer,
+  initialState
+);
 
-// export default App
+export default store
