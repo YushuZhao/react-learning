@@ -20,8 +20,8 @@ const SettingsItem = ({ title, clicked, selected }) => {
     };
 
     return (
-        <tr style={style.row}>
-            <td style={style.title}>title</td>
+        <tr style={style.row} onClick={clicked}>
+            <td style={style.title}>{title} test </td>
         </tr>
     )
 }

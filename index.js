@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SettingsItem from './src/components/SettingItem'
+
+import App from './src/store/configureStore';
 
 ReactDOM.render(
-    <SettingsItem />, 
+    <App />, 
     document.getElementById('root')
 );
