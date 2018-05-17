@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SettingsItem = ({ title, clicked, selected }) => {
+const SettingsItem = ({ item, title, clicked, selected }) => {
     const style = {
         row: {
             width: '50%',
@@ -8,8 +8,8 @@ const SettingsItem = ({ title, clicked, selected }) => {
             cursor: 'pointer'
         },
         title: {
-            color: selected ? 'black' :'red',
-            backgroundColor: selected ? '#FFFFFF': '#FFE4E1',
+            color: item == selected ? 'red' : 'black',
+            backgroundColor: item == selected ? '#FFE4E1': '#FFFFFF',
             textAlign: 'left',
             width: '67%',
             borderRadius: '20px',

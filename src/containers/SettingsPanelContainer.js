@@ -13,9 +13,9 @@ const SettingsPanel = () => {
         <div>
             <table>
                 <tbody>
-                    <SettingsItemContainer title={ACCOUNT}/>
-                    <SettingsItemContainer title={REPORT}/>
-                    <SettingsItemContainer title={VERSION}/>
+                    <SettingsItemContainer title={ACCOUNT} item={ACCOUNT}/>
+                    <SettingsItemContainer title={REPORT} item={REPORT}/>
+                    <SettingsItemContainer title={VERSION} item={VERSION}/>
                 </tbody>
             </table>
         </div>

@@ -8,6 +8,7 @@ function currentSettingSelected(state = REPORT, action) {
     switch (action.type) {
       case SELECT_SETTING:
         return action.setting_id;
+        // return null;
       default:
         return state;
     }
