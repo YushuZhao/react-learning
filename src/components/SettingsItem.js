@@ -11,11 +11,10 @@ const SettingsItem = ({ item, title, clicked, selected }) => {
             color: item == selected ? 'red' : 'black',
             backgroundColor: item == selected ? '#FFE4E1': '#FFFFFF',
             textAlign: 'left',
-            width: '67%',
+            width: '70%',
             borderRadius: '20px',
             paddingTop: '4px',
-            paddingLeft: '27px',
-            paddingRight: '3px',
+            paddingLeft: '50px',
           }
     };
 
