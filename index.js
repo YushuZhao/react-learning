@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Greeter from './src/component/Greeter'
+import Map from './src/component/Map'
 
 ReactDOM.render(
-    <Greeter />, 
+    <Map />, 
     document.getElementById('root')
 );

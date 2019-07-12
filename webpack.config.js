@@ -1,21 +1,24 @@
-let path=require('path');
-let HtmlWebpackPlugin=require('html-webpack-plugin');
-module.exports={
-    entry:'./index.js',
+let path = require('path');
+let HtmlWebpackPlugin = require('html-webpack-plugin');
+module.exports = {
+    entry: './index.js',
     output: {
-        path:path.resolve('build'),
+        path: path.resolve('build'),
         filename: "bundle.js"
     },
-    module:{
-        loaders:[
-            {test:/\.js$/,loader:'babel-loader',exclude:/node_modules/},
-            {test:/\.less$/,loader:'style-loader!css-loader!less-loader'},
-            {test:/\.(jpg|png|gif)$/,loader:'url-loader'}
+    module: {
+        loaders: [
+            { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
+            { test: /\.less$/, loader: 'style-loader!css-loader!less-loader' },
+            { test: /\.(jpg|png|gif)$/, loader: 'url-loader' }
         ]
     },
-    plugins:[
+    plugins: [
         new HtmlWebpackPlugin({
-            template:'./index.html'
+            template: './index.html'
         })
-    ]
+    ],
+    externals: {
+        'BMap': 'BMap'
+    },
 };
